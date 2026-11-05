@@ -17,7 +17,7 @@ def main(version,build_name):
     h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
     assert h(test)==h(out);test.unlink()
     readme=(ROOT/'docs/README_KO.txt').read_text(encoding='utf-8')
-    (rel/'README_KO.txt').write_text(readme.replace('{VERSION}',version).replace('{RESULT_SHA256}',h(out)).replace('{RESULT_MD5}',hashlib.md5(out.read_bytes()).hexdigest()),encoding='utf-8')
+    (rel/'README_KO.txt').write_text(readme.replace('{VERSION}',version).replace('{RESULT_SHA256}',h(out)).replace('{RESULT_MD5}',hashlib.md5(out.read_bytes()).hexdigest()).replace('{RESULT_CRC32}','%08X'%(__import__('zlib').crc32(out.read_bytes())&0xffffffff)),encoding='utf-8')
     sums=''.join(f'{h(p)}  {p.name}\n' for p in sorted(rel.iterdir()) if p.name in (patch.name,'README_KO.txt'))
     (rel/'SHA256SUMS.txt').write_text(sums,encoding='utf-8')
     # the release carries one zip: the xdelta and README_KO.txt (11/05)

@@ -24,11 +24,13 @@
 
   패치 전(원본 롬)
     크기    16,777,216 바이트
+    CRC32   F2FAE693
     MD5     a06d2e83cf2628915e8847f609474661
     SHA-256 9b66c00a983ceccccf17727731173d7c7eeef9f7c13faf44ae89e5d2b9f656c1
 
   패치 후({VERSION})
     크기    16,777,216 바이트
+    CRC32   {RESULT_CRC32}
     MD5     {RESULT_MD5}
     SHA-256 {RESULT_SHA256}
 
