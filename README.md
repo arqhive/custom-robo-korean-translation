@@ -32,9 +32,9 @@
 
 ### 적용 방법
 
-1. [릴리즈 페이지](../../releases/latest)에서 `NCXJ_KPatch_v<버전>.xdelta`를 받습니다.
-2. 패치 프로그램에서 원본 롬과 xdelta 파일을 고르고 적용합니다.
-3. 만들어진 롬을 실행합니다. 결과 롬의 해시는 함께 올린 `README_KO.txt`에 있습니다.
+1. [릴리즈 페이지](../../releases/latest)에서 `NCXJ_KPatch_v<버전>.zip`을 받아 압축을 풉니다.
+2. 패치 프로그램에서 원본 롬과 `NCXJ_KPatch_v<버전>.xdelta`를 고르고 적용합니다.
+3. 만들어진 롬을 실행합니다. 결과 롬의 해시는 압축 안의 `README_KO.txt`에 있습니다.
 
 ### 실행 환경
 
