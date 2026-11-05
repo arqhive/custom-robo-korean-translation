@@ -1,0 +1,25 @@
+# 롬·빌드 결과·패치 파일(배포는 릴리즈로)
+*.z64
+*.v64
+*.n64
+*.xdelta
+build/
+release/
+__pycache__/
+
+# 원본 롬에서 뽑는 추출물·원문 자료·그림 작업물(커밋하지 않음)
+manifests/
+work/extracted/
+work/research/
+work/runtime/
+work/graphics/
+work/claude/
+work/translation/catalog.json
+work/translation/source-texts.json
+work/translation/raw-text-classified.json
+work/translation/raw-text-full.json
+work/translation/display-texts-ko.json
+work/translation/master-texts.json
+work/translation/terms-ko.json
+work/translation/battle-names-ko.json
+work/translation/before-claude-review/
