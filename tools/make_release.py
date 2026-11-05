@@ -18,8 +18,13 @@ def main(version,build_name):
     assert h(test)==h(out);test.unlink()
     readme=(ROOT/'docs/README_KO.txt').read_text(encoding='utf-8')
     (rel/'README_KO.txt').write_text(readme.replace('{VERSION}',version).replace('{RESULT_SHA256}',h(out)).replace('{RESULT_MD5}',hashlib.md5(out.read_bytes()).hexdigest()),encoding='utf-8')
-    sums=''.join(f'{h(p)}  {p.name}\n' for p in sorted(rel.iterdir()) if p.name!='SHA256SUMS.txt')
+    sums=''.join(f'{h(p)}  {p.name}\n' for p in sorted(rel.iterdir()) if p.name in (patch.name,'README_KO.txt'))
     (rel/'SHA256SUMS.txt').write_text(sums,encoding='utf-8')
-    print(json.dumps({'patch':str(patch.relative_to(ROOT)),'bytes':patch.stat().st_size,'result_sha256':h(out)}))
+    # the release carries one zip: the xdelta and README_KO.txt (11/05)
+    import zipfile
+    zp=rel/f'NCXJ_KPatch_{version}.zip'
+    with zipfile.ZipFile(zp,'w',zipfile.ZIP_DEFLATED) as z:
+        for p in (patch,rel/'README_KO.txt'):z.write(p,p.name)
+    print(json.dumps({'zip':str(zp.relative_to(ROOT)),'patch':str(patch.relative_to(ROOT)),'bytes':patch.stat().st_size,'result_sha256':h(out)}))
 
 if __name__=='__main__':main(sys.argv[1],sys.argv[2])
